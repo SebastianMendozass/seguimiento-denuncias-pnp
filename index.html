@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123A35">
+<meta name="description" content="Prototipo académico accesible para consulta y seguimiento simulado de denuncias.">
+<title>Consulta y seguimiento de denuncias | Prototipo académico</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="topbar"><div class="topinner"><div class="brand"><div class="seal" aria-hidden="true">PNP</div><div><strong>POLICÍA NACIONAL DEL PERÚ</strong><span>Portal ciudadano · Seguimiento de denuncias</span></div></div><div class="tools" aria-label="Opciones de accesibilidad"><button class="toolbtn colorbtn" id="colorMode" type="button" aria-label="Cambiar colores: vista normal" title="Cambiar modo de color"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.7-.7 1.7-1.5 0-.4-.2-.8-.4-1.2-.3-.5-.6-1-.6-1.6 0-1.1.9-2 2-2H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z"/><circle cx="7.5" cy="10.5" r=".7" fill="currentColor"/><circle cx="10" cy="7" r=".7" fill="currentColor"/><circle cx="14" cy="7" r=".7" fill="currentColor"/><circle cx="17" cy="10" r=".7" fill="currentColor"/></svg><span>Color</span></button><button class="toolbtn voicebtn" id="voiceReader" type="button" aria-label="Escuchar el contenido de la página" aria-pressed="false" title="Escuchar página"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg><span>Escuchar</span></button><button class="toolbtn" id="smaller" aria-label="Reducir tamaño del texto">A−</button><button class="toolbtn" id="larger" aria-label="Aumentar tamaño del texto">A+</button><button class="toolbtn" id="helpTop">Ayuda</button></div></div></header>
+<div class="navwrap"><nav aria-label="Navegación principal"><button class="active" data-view="home">Inicio</button><button data-view="result">Seguimiento</button><button data-view="notifications">Notificaciones</button><button data-view="help">Ayuda y glosario</button></nav></div>
+<main class="container">
+<section id="home" class="view">
+<p class="eyebrow">Servicio ciudadano</p><h1>Consulta y seguimiento de denuncias</h1><p class="intro">Consulta el avance de tu denuncia con el código que recibiste al registrarla. Encontrarás el estado actual, las actualizaciones y una explicación sencilla de cada etapa.</p>
+<div class="grid"><div class="card"><h2>Consulta tu denuncia</h2><p class="hint">Ingresa el código que aparece en tu constancia de registro.</p><form id="lookupForm" novalidate><label class="fieldlabel" for="caseCode">Código de denuncia</label><div class="inputrow"><input id="caseCode" name="caseCode" autocomplete="off" placeholder="Ej. DEN-2026-001284" aria-describedby="codeHelp errorText" required><button class="btn" type="submit">Consultar <span aria-hidden="true">→</span></button></div><p id="codeHelp" class="hint">Para probar la demostración, ingresa <strong>D2024-0005678</strong> o <strong>DEN-2026-001284</strong>.</p><div id="errorText" class="alert error hidden" role="alert" aria-live="assertive"></div></form><div class="privacy"><span aria-hidden="true">🔒</span><span>Consulta protegida. No se muestra información hasta validar el código.</span></div></div>
+<aside class="info"><h2>¿Cómo funciona?</h2><ol class="steps"><li>Busca el código en tu constancia.</li><li>Escríbelo tal como aparece.</li><li>Consulta el estado, los documentos y las actuaciones.</li></ol><p class="small" style="margin-top:14px">Prototipo académico con datos ficticios. No está conectado a sistemas de la PNP.</p></aside></div>
+<div class="sectiongap"><button class="btn secondary" id="sampleBtn">Ver ejemplo de seguimiento</button></div>
+</section>
+<section id="result" class="view hidden">
+<p class="eyebrow">Resultado de consulta</p><h1>Seguimiento de tu denuncia</h1><p class="intro">Revisa la información registrada y qué significa el estado actual.</p>
+<div class="card">
+<div class="casehead"><div><p class="eyebrow">Datos personales</p><h2>Información del ciudadano</h2></div><span class="status">DATOS FICTICIOS</span></div>
+<p class="hint">Información ilustrativa asociada a esta denuncia de demostración.</p>
+<div class="personal-grid">
+<div class="personal-item"><span>Nombre completo</span><strong>María Elena Torres Salazar</strong></div>
+<div class="personal-item"><span>DNI</span><strong>7421 8563</strong></div>
+<div class="personal-item"><span>Correo electrónico</span><strong>maria.torres@example.com</strong></div>
+<div class="personal-item"><span>Teléfono</span><strong>+51 987 654 321</strong></div>
+</div>
+</div>
+<div class="card sectiongap">
+<div class="casehead"><div><div class="casecode" id="resultCode">DEN-2026-001284</div><h2 style="margin-top:5px">Denuncia registrada</h2></div><span class="status">EN TRÁMITE</span></div>
+<div class="case-summary">
+<div>
+<div class="case-description"><strong>Descripción del hecho</strong>La ciudadana informó que fue interceptada por dos personas cuando transitaba por la vía pública. Los presuntos responsables le sustrajeron sus pertenencias personales y se retiraron del lugar.</div>
+<div class="case-facts">
+<div class="case-fact"><span>Fecha de registro</span><strong>12 oct 2026 · 09:42</strong></div>
+<div class="case-fact"><span>Última actualización</span><strong>19 oct 2026 · 15:25</strong></div>
+<div class="case-fact"><span>Lugar de los hechos</span><strong>Av. La Marina, San Miguel, Lima</strong></div>
+</div>
+</div>
+<div class="case-type"><span>Tipo de denuncia</span><strong>Robo agravado</strong></div>
+</div>
+<div class="alert success sectiongap" role="status"><strong>¿Qué significa?</strong><br>La denuncia continúa su proceso. No significa que exista una decisión final.</div>
+</div>
+<div class="card sectiongap" id="evidenceSection">
+<p class="eyebrow">Documentos y actuaciones</p><h2>Evidencias y avances</h2>
+<p class="hint">Consulta los elementos y actuaciones que estén disponibles para ti. El acceso real depende de los permisos del expediente.</p>
+<div class="tabs" role="tablist" aria-label="Evidencias, pericias e historial">
+<button type="button" role="tab" id="tabEvidence" aria-controls="panelEvidence" aria-selected="true">Evidencias</button>
+<button type="button" role="tab" id="tabPericia" aria-controls="panelPericia" aria-selected="false">Pericias</button>
+<button type="button" role="tab" id="tabHistory" aria-controls="panelHistory" aria-selected="false">Historial</button>
+</div>
+<div class="evidence-scroll" tabindex="0" aria-label="Contenido desplazable de documentos y actuaciones">
+<div id="panelEvidence" role="tabpanel" aria-labelledby="tabEvidence">
+<div class="evidence-list">
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">▧</div><div class="evidence-content"><h3>Evidencia fotográfica</h3><p>Registro fotográfico incorporado al expediente.</p><span class="pill">Visualización y descarga permitidas</span><div class="evidence-actions"><button class="icon-action" id="viewEvidence" type="button" aria-expanded="false" aria-controls="evidencePreview"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Ver imagen</button><button class="icon-action" id="downloadEvidence" type="button"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>Descargar</button></div><div id="evidencePreview" class="evidence-preview hidden" role="region" aria-label="Vista de evidencia autorizada"><svg aria-hidden="true" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m4 17 5-5 4 4 2-2 5 4"/></svg><strong>Vista protegida de la evidencia</strong><p>Imagen ilustrativa disponible únicamente para ciudadanos autorizados.</p></div></div></div>
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">▤</div><div class="evidence-content"><h3>Documento adjunto</h3><p>Archivo registrado como parte de la denuncia.</p><span class="pill pending">En revisión de acceso</span></div></div>
+</div>
+</div>
+<div id="panelPericia" class="hidden" role="tabpanel" aria-labelledby="tabPericia">
+<div class="evidence-list">
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">⌕</div><div><h3>Evaluación pericial</h3><p>El estado y los detalles se mostrarán si existe una pericia asociada y el ciudadano cuenta con autorización para verla.</p><span class="pill pending">Acceso sujeto a autorización</span></div></div>
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">▤</div><div><h3>Informe pericial</h3><p>No se adjunta un informe real en este prototipo.</p><span class="pill pending">No disponible en la demostración</span></div></div>
+</div>
+</div>
+<div id="panelHistory" class="hidden" role="tabpanel" aria-labelledby="tabHistory">
+<div class="evidence-list">
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">✓</div><div><h3>12 oct 2026 · 09:42 — Denuncia registrada</h3><p>Se generó la constancia de recepción.</p></div></div>
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">↻</div><div><h3>13 oct 2026 · 11:10 — En evaluación</h3><p>La dependencia revisa la información recibida.</p></div></div>
+<div class="evidence-item"><div class="evidence-icon" aria-hidden="true">●</div><div><h3>19 oct 2026 · 15:25 — Gestión actualizada</h3><p>Última actuación ilustrativa registrada.</p></div></div>
+</div>
+</div>
+</div>
+<p class="contact-note evidence-note">Ejemplos ficticios; los archivos reales dependerán del expediente y de los permisos de acceso.</p>
+</div>
+<div class="twocol responsible-grid sectiongap">
+<div class="card detailcard" id="responsibleCard">
+<h2>Funcionario responsable</h2>
+<div class="officer-head"><div class="officer-avatar" aria-hidden="true">JM</div><div><h3>Suboficial Juan Mendoza</h3><div class="officer-role">Responsable asignado · Datos ficticios de demostración</div></div></div>
+<div class="detailrow"><span>Dependencia responsable</span><strong>Comisaría PNP San Miguel</strong></div>
+<div class="detailrow"><span>Área</span><strong>Atención y seguimiento de denuncias</strong></div>
+<div class="detailrow"><span>Última gestión registrada</span><strong>19 oct 2026 · 15:25</strong></div>
+<p class="small">Nombre y dependencia son datos ilustrativos. En producción se mostrarán únicamente datos institucionales autorizados.</p>
+</div>
+<div class="card detailcard" id="contactCard">
+<h2>Comunícate con el responsable</h2>
+<p class="hint">Envía una consulta sobre el seguimiento. No incluyas contraseñas ni información sensible innecesaria.</p>
+<form id="contactForm" class="contact-form">
+<div><label for="contactTopic">Motivo de la consulta</label><select id="contactTopic" required><option value="">Selecciona un motivo</option><option>Consulta sobre el estado</option><option>Consulta sobre la siguiente etapa</option><option>Acceso a documentos autorizados</option><option>Otro motivo</option></select></div>
+<div><label for="contactMessage">Mensaje</label><textarea id="contactMessage" required maxlength="1000" placeholder="Escribe tu consulta de forma clara (máximo 1000 caracteres)."></textarea></div>
+<button class="btn full" type="submit">Enviar consulta</button>
+<p class="contact-note">Demostración: el mensaje no se envía a la PNP ni al funcionario; solo se muestra una confirmación local.</p>
+<div id="contactFeedback" class="alert success hidden" role="status" aria-live="polite"></div>
+</form>
+<div id="liveChat" class="chat-panel hidden" aria-label="Chat con el funcionario responsable">
+<div class="chat-head"><div class="chat-person"><div class="chat-avatar" aria-hidden="true">JM</div><div><strong>Suboficial Juan Mendoza</strong><span class="chat-status">En línea · Atención de demostración</span></div></div><button class="callbtn" id="callOfficer" type="button" aria-label="Llamar al funcionario responsable" title="Iniciar llamada"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/></svg></button></div>
+<div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+<form id="chatForm" class="chat-compose"><label class="hidden" for="chatMessage">Escribe un mensaje</label><input id="chatMessage" maxlength="500" placeholder="Escribe un mensaje..." required><button class="btn" type="submit">Enviar</button></form>
+<p class="chat-demo">Chat simulado: no establece comunicación real con la PNP.</p>
+<div id="callFeedback" class="alert hidden" role="status" aria-live="polite"></div>
+</div>
+</div>
+</div>
+<div class="sectiongap" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn secondary" id="newLookup">← Hacer otra consulta</button><button class="btn" id="printCase">Ver constancia / imprimir →</button></div>
+</section>
+<section id="notifications" class="view hidden"><p class="eyebrow">Avisos del sistema</p><h1>Notificaciones y novedades</h1><p class="intro">Los avisos se presentan con fecha, hora y una explicación breve de lo ocurrido.</p><div class="notifications">
+<article class="notice"><div class="noticeicon" aria-hidden="true">i</div><div><time datetime="2026-10-19T15:25">19 oct 2026 · 15:25</time><h3>Se actualizó el estado de tu denuncia</h3><p>Se registró una nueva actuación. Consulta las actuaciones para revisar el detalle disponible.</p></div></article>
+<article class="notice"><div class="noticeicon" aria-hidden="true">i</div><div><time datetime="2026-10-13T11:10">13 oct 2026 · 11:10</time><h3>Tu denuncia está en evaluación</h3><p>La dependencia asignada está revisando la información registrada.</p></div></article>
+<article class="notice"><div class="noticeicon" aria-hidden="true">✓</div><div><time datetime="2026-10-12T09:42">12 oct 2026 · 09:42</time><h3>Registro confirmado</h3><p>Tu denuncia fue registrada. Conserva el código para futuras consultas.</p></div></article></div><div class="info sectiongap"><strong>Privacidad:</strong> las notificaciones no deben incluir evidencias ni datos sensibles del expediente.</div></section>
+<section id="help" class="view hidden"><p class="eyebrow">Orientación</p><h1>Ayuda y glosario</h1><p class="intro">Busca términos del proceso explicados en lenguaje sencillo.</p><div class="searchrow"><label for="glossarySearch" class="hidden">Buscar en el glosario</label><input id="glossarySearch" placeholder="Buscar, por ejemplo: en trámite"><button class="btn" id="searchGlossary">Buscar</button></div><div class="glossary" id="glossary">
+<article data-term="en tramite estado proceso"><h3>En trámite</h3><p>La denuncia continúa su proceso y aún no tiene un resultado final.</p></article>
+<article data-term="actuacion gestion"><h3>Actuación</h3><p>Acción o gestión registrada por la autoridad a cargo.</p></article>
+<article data-term="pericia evaluacion especializada"><h3>Pericia</h3><p>Evaluación especializada. Los detalles pueden estar restringidos.</p></article>
+<article data-term="evidencia expediente"><h3>Evidencia</h3><p>Elemento incorporado al expediente; el acceso depende de la autorización correspondiente.</p></article>
+<article data-term="dependencia unidad policial"><h3>Dependencia policial</h3><p>Unidad de la Policía que tiene a cargo una gestión relacionada con la denuncia.</p></article>
+<article data-term="siguiente etapa"><h3>Siguiente etapa</h3><p>La fase que corresponde después, de acuerdo con el flujo oficial y las actuaciones registradas.</p></article></div><p id="noTerms" class="alert hidden" role="status">No encontramos ese término. Prueba con otra palabra.</p>
+<div class="card sectiongap"><h2>Accesibilidad</h2><p>Ajusta el tamaño del texto con A− y A+. La página se adapta a pantallas pequeñas y permite navegar por las opciones con teclado.</p><p class="small">El prototipo visual no sustituye una auditoría completa de accesibilidad.</p></div></section>
+</main>
+<footer class="footer"><p>Portal ciudadano · Prototipo académico · Datos ficticios, no oficiales · Identidad visual V1</p></footer>
+<script src="js/app.js" defer></script>
+</body></html>
